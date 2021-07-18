@@ -7,7 +7,7 @@
 # dependencies used by the app
 pkg_dependencies="redis-server"
 
-nodejs_version=15
+nodejs_version=14
 
 # Dependencies for AbiWord
 abiword_app_depencencies="abiword"
