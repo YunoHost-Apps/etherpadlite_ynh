@@ -53,7 +53,7 @@ ynh_backup --src_path="/etc/systemd/system/$app.service"
 #=================================================
 ynh_print_info --message="Backing up the Redis database..."
 
-ynh_mysql_dump_db --database="$db" > dump.rdb
+ynh_redis_dump_db --database="$db" > dump.rdb
 
 #=================================================
 # END OF SCRIPT

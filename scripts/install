@@ -160,7 +160,7 @@ ynh_store_file_checksum --file="$final_path/settings.json"
 
 ynh_add_config --template="../conf/credentials.json" --destination="$final_path/credentials.json"
 
-chmod 600 $final_path/credentials.json
+chmod 400 $final_path/credentials.json
 
 #=================================================
 # SETUP SYSTEMD
