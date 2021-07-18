@@ -25,7 +25,7 @@ Online editor providing collaborative editing in real-time.
 
 * Official app website: https://etherpad.org/
 * Official user documentation: https://yunohost.org/en/app_etherpad
-* Official admin documentation: http://etherpad.org/doc/v1.8.13
+* Official admin documentation: http://etherpad.org/doc/v1.8.14
 * Upstream app code repository: https://github.com/ether/etherpad-lite
 * YunoHost documentation for this app: https://yunohost.org/app_etherpad
 * Report a bug: https://github.com/YunoHost-Apps/etherpad_ynh/issues
