@@ -115,10 +115,10 @@ ynh_script_progression --message="Configuring NGINX web server..." --weight=4
 # Create a dedicated NGINX config
 ynh_add_nginx_config
 
-# #=================================================
-# # INSTALL ETHERPAD
-# #=================================================
-# ynh_script_progression --message="Installing Etherpad..." --weight=90
+#=================================================
+# INSTALL ETHERPAD
+#=================================================
+ynh_script_progression --message="Installing Etherpad..." --weight=90
 
 chown -R $app $final_path
 
