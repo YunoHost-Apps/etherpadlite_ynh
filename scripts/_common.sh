@@ -31,7 +31,7 @@ libreoffice_app_dependencies="unoconv libreoffice-writer"
 # REDIS HELPERS
 #=================================================
 
-# get the first available redis database
+# get the first available Redis database
 #
 # usage: ynh_redis_get_free_db
 # | returns: the database number to use
@@ -67,4 +67,15 @@ ynh_redis_get_free_db() {
 ynh_redis_remove_db() {
     local db=$1
     redis-cli -n "$db" flushall
+}
+
+
+# Create a master password and set up global settings
+# Please always call this script in backup script
+#
+# usage: ynh_redis_dump_db database
+# | arg: database - the database to dump
+ynh_redis_dump_db() {
+    local db=$1
+    redis-cli redis-dump -d "$db"
 }
