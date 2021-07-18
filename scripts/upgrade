@@ -121,7 +121,7 @@ then
 	pushd "$final_path"
 		git pull origin
 		ynh_use_nodejs
-		ynh_exec_as $app env "$ynh_node_load_PATH" src/bin/run.sh
+		ynh_exec_as $app env "$ynh_node_load_PATH" src/bin/installDeps.sh
 	popd
 fi
 
