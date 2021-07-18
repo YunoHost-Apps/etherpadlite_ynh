@@ -91,15 +91,13 @@ ynh_script_progression --message="Configuring system user..." --weight=4
 ynh_system_user_create --username=$app --home_dir=$final_path
 
 #=================================================
-# CREATE A POSTQRESQL DATABASE
+# CREATE A REDIS DATABASE
 #=================================================
-ynh_script_progression --message="Creating a PostgreSQL database..." --weight=5
+ynh_script_progression --message="Creating a Redis database..." --weight=5
 
-db_name=$(ynh_sanitize_dbid --db_name=$app)
-db_user=$db_name
-ynh_app_setting_set --app=$app --key=db_name --value=$db_name
-ynh_psql_test_if_first_run
-ynh_psql_setup_db --db_user=$db_name --db_name=$db_name
+# Configure redis
+redis_db=$(ynh_redis_get_free_db)
+ynh_app_setting_set --app="$app" --key=redis_db --value="$redis_db"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
