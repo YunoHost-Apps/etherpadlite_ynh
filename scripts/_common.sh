@@ -70,6 +70,7 @@ ynh_redis_remove_db() {
 }
 
 
+
 # Create a master password and set up global settings
 # Please always call this script in backup script
 #
@@ -85,4 +86,22 @@ ynh_redis_dump_db() {
 
     local db=$1
     redis-cli redis-dump -d "$db"
+}
+
+
+
+
+
+ynh_install_redis() {
+    ynh_print_info --message="Installing Redis..."
+    ynh_install_app_dependencies "redis-server"
+    # Define Redis Service Name
+    REDIS_SERVICENAME=$redis-server
+    
+    # Make sure MongoDB is started and enabled
+    systemctl is-enabled $REDIS_SERVICENAME -q || systemctl enable $REDIS_SERVICENAME --quiet
+    systemctl is-active $REDIS_SERVICENAME -q || ynh_systemd_action --service_name=$REDIS_SERVICENAME --action=restart --line_match="aiting for connections" --log_path="/var/log/redis/REDIS_SERVICENAME.log"
+    
+    # Integrate MongoDB service in YunoHost
+    yunohost service add $REDIS_SERVICENAME --description="Redis daemon" --log="/var/log/redis/$REDIS_SERVICENAME.log"
 }
