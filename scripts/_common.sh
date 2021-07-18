@@ -76,6 +76,13 @@ ynh_redis_remove_db() {
 # usage: ynh_redis_dump_db database
 # | arg: database - the database to dump
 ynh_redis_dump_db() {
+    # Declare an array to define the options of this helper.
+    local legacy_args=d
+    local -A args_array=([d]=database=)
+    local database
+    # Manage arguments with getopts
+    ynh_handle_getopts_args "$@"
+
     local db=$1
     redis-cli redis-dump -d "$db"
 }
